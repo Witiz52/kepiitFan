@@ -1,0 +1,441 @@
+/* Базовые настройки */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ffffff; /* Полностью белый фон сайта */
+    font-family: Georgia, 'Times New Roman', Times, serif; 
+    color: #222;
+}
+
+/* Контейнер во весь экран */
+.site-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- ШАПКА --- */
+.header {
+    display: flex;
+    align-items: center;
+    padding: 15px 5%; /* 5% отступы по бокам, чтобы контент не прилипал к краям монитора */
+    border-bottom: 1px solid #ddd;
+}
+
+.logo img {
+    width: 50px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.nav {
+    margin-left: auto; /* Сдвигает меню вправо */
+    display: flex;
+    gap: 25px; /* Чуть увеличили расстояние между 5 пунктами */
+}
+
+.nav a {
+    text-decoration: none;
+    color: #222;
+    font-size: 18px;
+    transition: color 0.2s ease;
+}
+
+.nav a.active, .nav a:hover {
+    color: #3b3bdf; /* Синий цвет для активного пункта и при наведении */
+}
+
+/* --- ГЛАВНЫЙ БАННЕР (ЗДАНИЕ) --- */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 870px;
+    
+    /* СЮДА ВПИСЫВАЕМ НАЗВАНИЕ КАРТИНКИ */
+    /* Если ваше фото называется building.jpg, то пишем так: */
+    background: linear-gradient(rgba(45, 75, 215, 0.7), rgba(45, 75, 215, 0.7)), url('kqpit.jpg');
+    
+    background-size: cover;
+    background-position: center;
+    padding: 50px 5%;
+    display: flex;
+    align-items: center;
+}
+
+.hero h1 {
+    color: #ffffff;
+    font-size: 36px;
+    font-weight: normal;
+    line-height: 1.3;
+}
+
+/* --- ОСНОВНОЙ КОНТЕНТ --- */
+.content {
+    flex-grow: 1;
+    padding: 40px 5%;
+}
+
+.text-block h2 {
+    font-size: 50px;
+    font-weight: normal;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.text-block p {
+    font-size: 23px;
+    line-height: 1.6;
+    max-width: 800px; /* Чтобы текст не растягивался слишком широко на огромных мониторах и легко читался */
+}
+
+.image-block {
+    text-align: left; /* Картинка выровнена по левому краю, как на макете */
+    margin: 40px 0;
+}
+
+.image-block img {
+    max-width: 100%;
+    height: auto;
+    width: 450px; /* Размер картинки с аудиторией */
+}
+
+.bottom-text {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.link-blue {
+    color: #3b3bdf;
+    text-decoration: none;
+}
+.link-blue:hover {
+    text-decoration: underline;
+}
+
+/* --- ПОДВАЛ --- */
+.footer {
+    background-color: #000000;
+    color: #aaaaaa;
+    text-align: right;
+    padding: 15px 5%;
+    font-size: 13px;
+    font-family: Arial, sans-serif;
+}
+
+/*АДАПТИВНОСТЬ (МОБИЛА И ПЛАНШЕТЫ)*/
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    .nav {
+        margin-left: 0;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    .hero {
+        height: 300px;
+    }
+    .hero h1 {
+        font-size: 24px;
+    }
+    .text-block h2 {
+        font-size: 20px;
+    }
+    .text-block p {
+        font-size: 16px;
+    }
+}
+/* --- СТРАНИЦА "ИЗНУТРИ" --- */
+.title-centered {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.title-centered h2 {
+    font-size: 24px;
+    font-weight: normal;
+}
+
+/* Сетка для галереи фотографий */
+.gallery-block {
+    max-width: 750px;
+    margin: 0 auto 50px auto; /* Центрируем галерею по ширине текста */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Расстояние между верхними и нижней картинкой */
+}
+
+.gallery-top {
+    display: flex;
+    gap: 20px; /* Расстояние между двумя картинками в одном ряду */
+    justify-content: space-between;
+}
+
+.gallery-top img {
+    width: calc(50% - 10px); /* Каждая картинка занимает ровно половину ширины минус отступ */
+    height: auto;
+    object-fit: cover; /* Чтобы фото не сплющивались */
+}
+
+.gallery-bottom img {
+    width: 100%; /* Нижняя картинка на всю ширину */
+    height: auto;
+    object-fit: cover;
+}
+
+/* Адаптивность галереи для телефонов */
+@media (max-width: 600px) {
+    .gallery-top {
+        flex-direction: column; /* На телефонах ставим фото друг под другом */
+    }
+    .gallery-top img {
+        width: 100%;
+    }
+}
+/* --- СТРАНИЦА "ПРЕПОДАВАТЕЛИ" --- */
+
+/* Главный flex-контейнер для карточек */
+.teachers-flexbox {
+    display: flex;
+    flex-wrap: wrap; /* Разрешаем перенос на новую строку */
+    justify-content: center; /* Центрируем карточки */
+    gap: 30px; /* Отступы между карточками */
+    max-width: 850px;
+    margin: 0 auto 50px auto;
+}
+
+/* Сама карточка (тоже flex-контейнер для выравнивания текста) */
+.teacher-card {
+    display: flex;
+    flex-direction: column;
+    width: 240px; /* Ширина одной карточки */
+    background-color: #ffffff;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* Легкая начальная тень */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Плавность анимации */
+}
+
+.teacher-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover; /* Фото обрезается аккуратно */
+    filter: brightness(0.85); /* Слегка затемняем фото по умолчанию */
+    transition: filter 0.3s ease; /* Плавность высвечивания */
+}
+
+/* Блок с текстом под фото */
+.teacher-info {
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Растягиваем текст, если карточки разной высоты */
+    justify-content: center;
+}
+
+.teacher-info h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.teacher-info p {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #444;
+}
+
+/* Эффект наведения (HOVER) */
+.teacher-card:hover {
+    transform: translateY(-8px); /* Карточка приподнимается вверх */
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15); /* Тень становится больше */
+}
+
+.teacher-card:hover img {
+    filter: brightness(1.1); /* Фотография высвечивается (становится яркой) */
+}
+
+/* Адаптивность для телефонов */
+@media (max-width: 600px) {
+    .teacher-card {
+        width: 100%; /* На мобильных карточка на всю ширину экрана */
+        max-width: 300px;
+    }
+}
+/* --- СТРАНИЦА "ОПРОС" --- */
+
+.title-poll {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.title-poll h2 {
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.title-poll img {
+    width: 35px; /* Размер маленькой иконки блокнота */
+    height: auto;
+}
+
+.form-container {
+    max-width: 700px;
+    margin: 0 auto 40px auto; /* Центрируем форму на странице */
+    background-color: #f9f9f9; /* Делаем легкий серый фон под форму, как на макете */
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* Стили для настоящей вставленной формы (iframe) */
+.form-container iframe {
+    width: 100%;
+    height: 700px; /* Высота блока с формой. Если форма длиннее, увеличьте это число */
+    border: none;
+}
+
+/* Стили на случай, если вы вставите просто картинку вместо iframe */
+.form-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+.top-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+
+    width: 50px;
+    height: 50px;
+
+    background-color: #3b3bdf;
+    color: white;
+
+    text-decoration: none;
+    text-align: center;
+    line-height: 50px;
+    font-size: 24px;
+
+    border-radius: 50%;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+
+    transition: all 0.3s ease;
+}
+
+.top-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+.maps-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    margin: 30px 0;
+}
+.maps-container img:first-child {
+    width: 700px;
+    height: 300px;
+}
+
+.maps-container img:last-child {
+    width: 700px;
+    height: 300px;
+}
+.map-single {
+    margin: 30px 0;
+}
+
+.map-single img {
+    width: 700px;
+    max-width: 100%;
+    height: auto;
+
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+.poll-info {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin: 40px 0;
+}
+
+.poll-image img {
+    width: 300px;
+    height: auto;
+}
+
+.poll-text {
+    flex: 1;
+}
+
+.poll-text h3 {
+    margin-bottom: 15px;
+}
+
+.poll-text p {
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+.inside-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin: 30px auto;
+}
+
+.inside-card {
+    width: 550px;
+    padding: 20px;
+    border: 1px solid #bdbdbd;
+    background: #f8f8f8;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.inside-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+}
+
+.inside-card img {
+    width: 500px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.inside-card p {
+    width: 500px;
+    font-size: 24px;
+    line-height: 1.4;
+    color: #444;
+}
